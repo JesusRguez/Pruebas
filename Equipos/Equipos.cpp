@@ -17,8 +17,22 @@ int main()
     mt19937 rng(semilla());
     uniform_int_distribution<int> gen(1, 2);
 
-    cout << "Ingrese el numero de jugadores: ";
-    cin >> numerojugadores;
+    do {
+        cout << "Ingrese el número de jugadores: ";
+        cin >> numerojugadores;
+        if(numerojugadores < 0){
+            cout << "No se puede jugar con un número negativo de jugadores."<<endl;
+        }else {
+            if (numerojugadores == 0) {
+                cout <<"No se puede jugar sin jugadores."<<endl;
+            }else {
+                if (numerojugadores == 1) {
+                    cout <<"Con un solo jugador no se pueden hacer dos equipos."<<endl;
+                }
+            }
+        }
+    } while(numerojugadores < 2);
+
 
     for(int i=0; i < numerojugadores; i++){
         cout << i+1 << ". ";

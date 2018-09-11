@@ -5,8 +5,24 @@ public class Equipos2{
     public static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.print("Ingrese el número de jugadores: ");
-        int n = teclado.nextInt();
+
+        int n=0;
+
+        do{
+            System.out.print("Ingrese el número de jugadores: ");
+            n = teclado.nextInt();
+            if(n < 0){
+                System.out.println("No se puede jugar con un número negativo de jugadores.");
+            }else {
+                if (n == 0) {
+                    System.out.println("No se puede jugar sin jugadores.");
+                }else {
+                    if (n == 1) {
+                        System.out.println("Con un solo jugador no se pueden hacer dos equipos.");
+                    }
+                }
+            }
+        }while(n < 2);
 
         ArrayList<String> blancos = new ArrayList<String>();
         ArrayList<String> negros = new ArrayList<String>();
