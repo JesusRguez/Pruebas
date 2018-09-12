@@ -5,8 +5,7 @@
 
 using namespace std;
 
-int main()
-{
+int main(){
     //Declaracion de variables necesarias...
     int numerojugadores, numeroaleatorio;
     vector<string> equipoblanco, equiponegro, nombresjugadores;
