@@ -45,7 +45,7 @@ int main(int argc, char const *argv[]) {
         //std::cout << "Persona " << i+1 << ":" << std::endl;
         edad = joven + (rand() % ((viejo+1)-joven));
         genero = 1 + (rand() % 2);
-        txt << "Persona " << i+1 << ": Edad: " << edad << "Género: " << genero << "\n";
+        txt << "Persona " << i+1 << ":\tEdad: " << edad << "\tGénero: " << genero << "\n";
         csv << "\"Persona " << i+1 <<"\",\"" << edad << "\",\"" << genero << "\",";
         for (size_t j = 0; j < preguntas; ++j) {
             respuesta = limiteInferior + (rand() % limiteSuperior);
