@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
-    int personas, preguntas, limiteInferior, limiteSuperior;
+    int personas, preguntas, limiteInferior, limiteSuperior, genero, edad, joven, viejo;
     ofstream txt("Resultados.txt");
     ofstream csv("Resultados.csv");
 
@@ -15,12 +15,16 @@ int main(int argc, char const *argv[]) {
     std::cin >> personas;
     std::cout << "Introduce el número de preguntas: ";
     std::cin >> preguntas;
-    std::cout << "Introduce el rango de la encuesta:\nLímite inferior: ";
+    std::cout << "\nIntroduce el rango de edades:\nIntroduce la edad de la persona más joven: ";
+    std::cin >> joven;
+    std::cout << "Introduce la edad de la persona más longeva: ";
+    std::cin >> viejo;
+    std::cout << "\nIntroduce el rango de la encuesta:\nLímite inferior: ";
     std::cin >> limiteInferior;
     std::cout << "Límtie superior: ";
     std::cin >> limiteSuperior;
 
-    csv << "\"Personas\",";
+    csv << "\"Personas\",\"Edad\",\"Género\",";
 
     for (size_t i = 0; i < preguntas; ++i) {
         csv << "\"Pregunta " << i+1;
@@ -39,8 +43,10 @@ int main(int argc, char const *argv[]) {
     srand(time(NULL));
     for (size_t i = 0; i < personas; ++i) {
         //std::cout << "Persona " << i+1 << ":" << std::endl;
-        txt << "Persona " << i+1 << ":" << "\n";
-        csv << "\"Persona " << i+1 <<"\",";
+        edad = joven + (rand() % ((viejo+1)-joven));
+        genero = 1 + (rand() % 2);
+        txt << "Persona " << i+1 << ": Edad: " << edad << "Género: " << genero << "\n";
+        csv << "\"Persona " << i+1 <<"\",\"" << edad << "\",\"" << genero << "\",";
         for (size_t j = 0; j < preguntas; ++j) {
             respuesta = limiteInferior + (rand() % limiteSuperior);
             //std::cout << "\tPregunta " << j+1 << ":" << respuesta << std::endl;
