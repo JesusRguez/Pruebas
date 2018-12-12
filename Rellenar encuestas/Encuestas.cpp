@@ -1,7 +1,11 @@
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
+#include <ctime>
 #include <fstream>
+#include <random>
+extern "C" {
+	#include <unistd.h>
+}
 
 using namespace std;
 
@@ -40,6 +44,9 @@ int main(int argc, char const *argv[]) {
 
     //std::cout << "Estos son los resultados:" << std::endl;
 
+    std::random_device gna;
+    std::uniform_int_distribution<size_t> dis(limiteInferior, limiteSuperior);
+
     srand(time(NULL));
     for (size_t i = 0; i < personas; ++i) {
         //std::cout << "Persona " << i+1 << ":" << std::endl;
@@ -48,7 +55,11 @@ int main(int argc, char const *argv[]) {
         txt << "Persona " << i+1 << ":\tEdad: " << edad << "\tGénero: " << genero << "\n";
         csv << "\"Persona " << i+1 <<"\",\"" << edad << "\",\"" << genero << "\",";
         for (size_t j = 0; j < preguntas; ++j) {
-            respuesta = limiteInferior + (rand() % limiteSuperior);
+
+            //respuesta = limiteInferior + (rand() % limiteSuperior);
+
+            respuesta = dis(gna);
+
             //std::cout << "\tPregunta " << j+1 << ":" << respuesta << std::endl;
             txt << "\tPregunta " << j+1 << ":" << respuesta << "\n";
             csv << "\"" << respuesta;
